@@ -4,7 +4,7 @@ require_relative 'distance_to_bunny'
 RSpec.describe Traveler do
   it "knows starting orientation" do
     t = Traveler.new
-    expect(t.start_orientation).to eq("north")
+    expect(t.orientation).to eq("north")
   end
 
   it "starts at 0 blocks away" do
@@ -12,8 +12,11 @@ RSpec.describe Traveler do
     expect(t.blocks_away).to eq(0)
   end
 
-  it "knows orientation if moving right from north" do
-
+  it "knows how to move right" do
+    t = Traveler.new
+    t.move(["R5"])
+    expect(t.blocks_away).to eq(5)
+    expect(t.orientation).to eq("east")
   end
 
   it "knows orientation if moving left from north" do
